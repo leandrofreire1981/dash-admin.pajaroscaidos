@@ -6,8 +6,18 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { getDataDb } from "../../redux/actions";
 
 const List = () => {
+  const data = useSelector(state => state.data)
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(getDataDb())
+  },[])
+  
   const rows = [
     {
       id: 1143155,
