@@ -12,11 +12,6 @@ import { getDataDb } from "../../redux/actions";
 
 const List = () => {
   const data = useSelector(state => state.data)
-  const dispatch = useDispatch()
-
-  useEffect(() => {
-    dispatch(getDataDb())
-  },[])
   
   const rows = [
     {
@@ -75,31 +70,31 @@ const List = () => {
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
         <TableHead>
           <TableRow>
-            <TableCell className="tableCell">Tracking ID</TableCell>
-            <TableCell className="tableCell">Product</TableCell>
-            <TableCell className="tableCell">Customer</TableCell>
-            <TableCell className="tableCell">Date</TableCell>
-            <TableCell className="tableCell">Amount</TableCell>
-            <TableCell className="tableCell">Payment Method</TableCell>
-            <TableCell className="tableCell">Status</TableCell>
+            <TableCell className="tableCell">Nombre</TableCell>
+            <TableCell className="tableCell">E-mail</TableCell>
+            <TableCell className="tableCell">Celular</TableCell>
+            <TableCell className="tableCell">Rescate de</TableCell>
+            <TableCell className="tableCell">C. de volunt.</TableCell>
+            <TableCell className="tableCell">C. de 1º aux.</TableCell>
+            <TableCell className="tableCell">Experiencia</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map((row) => (
+          {data.length && data.map((row) => (
             <TableRow key={row.id}>
-              <TableCell className="tableCell">{row.id}</TableCell>
+              <TableCell className="tableCell">{row.full_name}</TableCell>
               <TableCell className="tableCell">
                 <div className="cellWrapper">
-                  <img src={row.img} alt="" className="image" />
-                  {row.product}
+                {/*   <img src={row.img} alt="" className="image" /> */}
+                  {row.email}
                 </div>
               </TableCell>
-              <TableCell className="tableCell">{row.customer}</TableCell>
-              <TableCell className="tableCell">{row.date}</TableCell>
-              <TableCell className="tableCell">{row.amount}</TableCell>
-              <TableCell className="tableCell">{row.method}</TableCell>
+              <TableCell className="tableCell">{row.celular}</TableCell>
+              <TableCell className="tableCell">{row.rescate}</TableCell>
+              <TableCell className="tableCell">{row.volunt}</TableCell>
+              <TableCell className="tableCell">{row.auxilios}</TableCell>
               <TableCell className="tableCell">
-                <span className={`status ${row.status}`}>{row.status}</span>
+                <span className={`status ${row.exp}`}>{row.exp}</span>
               </TableCell>
             </TableRow>
           ))}

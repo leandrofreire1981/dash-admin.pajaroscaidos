@@ -5,7 +5,7 @@ export default async function getDb(){
     const fireDb = getFirestore(fb)
     let a = []
     const querySnapshot = await getDocs(collection(fireDb, "encuestados"))
-    querySnapshot.forEach(doc => {
+    querySnapshot.forEach(doc => { 
         let aux = {
             full_name: doc.data().full_name,
             atencion: doc.data().atencion,

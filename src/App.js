@@ -6,12 +6,23 @@ import New from "./pages/new/New";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { productInputs, userInputs } from "./formSource";
 import "./style/dark.scss";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { DarkModeContext } from "./context/darkModeContext";
+import { useDispatch, useSelector } from "react-redux";
+import { getDataDb } from "./redux/actions";
 
 function App() {
   const { darkMode } = useContext(DarkModeContext);
 
+
+
+  const dispatch = useDispatch()
+  const { data } = useSelector(state => state)
+
+  useEffect(() => {
+    dispatch(getDataDb())
+  },[])
+  if(data)
   return (
     <div className={darkMode ? "app dark" : "app"}>
       <BrowserRouter>
@@ -40,6 +51,8 @@ function App() {
       </BrowserRouter>
     </div>
   );
+  else
+    return <div>cargando</div>
 }
 
 export default App;
