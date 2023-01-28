@@ -9,6 +9,8 @@ import Paper from "@mui/material/Paper";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { getDataDb } from "../../redux/actions";
+import { Link } from "react-router-dom";
+import FeedIcon from '@mui/icons-material/Feed';
 
 const List = () => {
   const data = useSelector(state => state.data)
@@ -73,8 +75,8 @@ const List = () => {
             <TableCell className="tableCell">Nombre</TableCell>
             <TableCell className="tableCell">E-mail</TableCell>
             <TableCell className="tableCell">Celular</TableCell>
-            <TableCell className="tableCell">Rescate de</TableCell>
-            <TableCell className="tableCell">C. de volunt.</TableCell>
+            <TableCell className="tableCell">Link</TableCell>
+            <TableCell className="tableCell">Detalles</TableCell>
             <TableCell className="tableCell">C. de 1º aux.</TableCell>
             <TableCell className="tableCell">Experiencia</TableCell>
           </TableRow>
@@ -90,8 +92,11 @@ const List = () => {
                 </div>
               </TableCell>
               <TableCell className="tableCell">{row.celular}</TableCell>
-              <TableCell className="tableCell">{row.rescate}</TableCell>
-              <TableCell className="tableCell">{row.volunt}</TableCell>
+              <a href={row.user} >
+                <TableCell className="tableCell">{row.user}</TableCell>
+              </a>
+              
+              <TableCell className="tableCell"><Link to={`users/${row.id}`}><FeedIcon/></Link></TableCell>
               <TableCell className="tableCell">{row.auxilios}</TableCell>
               <TableCell className="tableCell">
                 <span className={`status ${row.exp}`}>{row.exp}</span>

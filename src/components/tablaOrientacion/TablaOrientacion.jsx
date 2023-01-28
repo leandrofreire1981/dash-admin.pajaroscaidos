@@ -1,4 +1,4 @@
-import "./tablaInfo.scss";
+import "./tablaOrientacion.scss";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import { CircularProgressbar } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
@@ -18,9 +18,9 @@ let array = [0, 0]
 function a(dataDb, setDatos) {
   dataDb.map(r => {
     console.log('asdfasdfasdf')
-  if(r.info === 'si')
+  if(r.orientacion === 'si')
     array[0]=array[0]+1
-  if(r.info === 'no')
+  if(r.orientacion === 'no')
     array[1]=array[1]+1
   })
   
@@ -45,7 +45,7 @@ function a(dataDb, setDatos) {
     ],
   })
 }
-const TablaInformacion = () => {
+const TablaOrientacion = () => {
   let dataDb = useSelector(state => state.data)
   const dispatch = useDispatch()
   const [datos, setDatos] = useState('')
@@ -62,7 +62,7 @@ useEffect(() => {a(dataDb, setDatos)}, [])
  // if(datos)
   return(
     <div className="featured">
-      ¿La información fue precisa y clara?
+      ¿La orientación resolvió tu consulta principal?
       {dataDb && datos && <Pie data={datos}/>  }
     </div>
   )
@@ -70,4 +70,4 @@ useEffect(() => {a(dataDb, setDatos)}, [])
 
 };
 
-export default TablaInformacion;
+export default TablaOrientacion;

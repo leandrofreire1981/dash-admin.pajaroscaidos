@@ -14,7 +14,8 @@ const Navbar = () => {
 
   return (
     <div className="navbar">
-      <div className="wrapper">
+      Resultados de las encuestas 
+{/*       <div className="wrapper">
         <div className="search">
           <input type="text" placeholder="Search..." />
           <SearchOutlinedIcon />
@@ -52,7 +53,7 @@ const Navbar = () => {
             />
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };

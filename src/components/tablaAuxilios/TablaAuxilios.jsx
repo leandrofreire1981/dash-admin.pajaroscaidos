@@ -1,4 +1,4 @@
-import "./tablaInfo.scss";
+import "./tablaAuxilios.scss";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import { CircularProgressbar } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
@@ -13,19 +13,21 @@ import { getDataDb } from "../../redux/actions";
 import { useState } from "react";
 
 
-let array = [0, 0]
+let array = [0, 0, 0]
 
 function a(dataDb, setDatos) {
   dataDb.map(r => {
     console.log('asdfasdfasdf')
-  if(r.info === 'si')
+  if(r.auxilios === 'si')
     array[0]=array[0]+1
-  if(r.info === 'no')
+  if(r.auxilios === 'no')
     array[1]=array[1]+1
+  if(r.auxilios === 'Tal vez')
+    array[2]=array[2]+1  
   })
   
   setDatos( {
-    labels: [`Si: ${array[0]}`, `No: ${array[1]}`],
+    labels: [`Si: ${array[0]}`, `No: ${array[1]}`, `Mala: ${array[2]}`],
     datasets: [
       {
         label: '# de votos',
@@ -45,7 +47,7 @@ function a(dataDb, setDatos) {
     ],
   })
 }
-const TablaInformacion = () => {
+const TablaAuxilios = () => {
   let dataDb = useSelector(state => state.data)
   const dispatch = useDispatch()
   const [datos, setDatos] = useState('')
@@ -62,12 +64,12 @@ useEffect(() => {a(dataDb, setDatos)}, [])
  // if(datos)
   return(
     <div className="featured">
-      ¿La información fue precisa y clara?
-      {dataDb && datos && <Pie data={datos}/>  }
+      Curso de primeros auxilios en aves.
+      {dataDb && datos && <Pie data={datos}  />  }
     </div>
   )
  //return(<div>nada</div>)
 
 };
 
-export default TablaInformacion;
+export default TablaAuxilios;
