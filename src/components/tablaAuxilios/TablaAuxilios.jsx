@@ -32,7 +32,7 @@ function a(dataDb, setDatos) {
   })
   
   setDatos( {
-    labels: [`Si: ${array[0]}`, `No: ${array[1]}`, `Mala: ${array[2]}`],
+    labels: [`Si: ${array[0]}`, `No: ${array[1]}`, `Tal vez: ${array[2]}`],
     datasets: [
       {
         label: '# de votos',
