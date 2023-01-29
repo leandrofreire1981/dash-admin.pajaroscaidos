@@ -16,6 +16,8 @@ import { DarkModeContext } from "../../context/darkModeContext";
 import { useContext } from "react";
 import MessageIcon from '@mui/icons-material/Message';
 import SchoolIcon from '@mui/icons-material/School';
+import WarningAmberIcon from '@mui/icons-material/WarningAmber';
+import FlutterDashIcon from '@mui/icons-material/FlutterDash';
 
 const Sidebar = () => {
   const { dispatch } = useContext(DarkModeContext);
@@ -32,7 +34,7 @@ const Sidebar = () => {
           <p className="title">Menú</p>
           <li>
             <Link to='/' style={{ textDecoration: "none" }}>
-              <DashboardIcon className="icon" />
+              <FlutterDashIcon className="icon" />
               <span>Página principal</span>
             </Link>
           </li>
@@ -49,14 +51,6 @@ const Sidebar = () => {
               <span>Sugerencias</span>
             </li>
           </Link>
-          <li>
-            <CreditCardIcon className="icon" />
-            <span>Orders</span>
-          </li>
-          <li>
-            <LocalShippingIcon className="icon" />
-            <span>Delivery</span>
-          </li>
           <p className="title">LISTAS DE MAILS</p>
           <li>
             <SchoolIcon className="icon" />
@@ -70,24 +64,25 @@ const Sidebar = () => {
               <span>Curso volunt.</span>
             </Link>
           </li>
-          <p className="title">SERVICE</p>
+          <p className="title">NEGATIVAS</p>
           <li>
-            <SettingsSystemDaydreamOutlinedIcon className="icon" />
-            <span>System Health</span>
+            <WarningAmberIcon className="icon" />
+            <span>¿El ave no sobrevivió</span>
           </li>
           <li>
-            <PsychologyOutlinedIcon className="icon" />
-            <span>Logs</span>
+            <WarningAmberIcon className="icon" />
+            <span>Información no fue clara</span>
           </li>
           <li>
-            <SettingsApplicationsIcon className="icon" />
-            <span>Settings</span>
+            <WarningAmberIcon className="icon" />
+            <span>Consulta no resuelta</span>
+          </li>
+          <li>
+            <WarningAmberIcon className="icon" />
+            <span>Mala atención</span>
           </li>
           <p className="title">USER</p>
-          <li>
-            <AccountCircleOutlinedIcon className="icon" />
-            <span>Profile</span>
-          </li>
+
           <li>
             <ExitToAppIcon className="icon" />
             <span>Logout</span>

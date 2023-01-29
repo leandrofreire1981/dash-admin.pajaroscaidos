@@ -30,14 +30,6 @@ const Auxilios = () => {
     }) */
   },[]) 
 
-  function handleOnClick(){
-    let aux = document.createElement("input")
-    aux.setAttribute("value", data.map(r => r.email))
-    aux.select()
-    document.execCommand("copy")
-    console.log('valor de aux: ', aux.value)
-  }
-
   return (
     <div className="list">
     <Sidebar/>
@@ -49,7 +41,6 @@ const Auxilios = () => {
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
         <TableHead>
             <TableCell className="tableCell">Mails de personas dispuestas a realizar el curso de primeros auxilios:</TableCell>
-            <TableCell className="tableCell"><CopyAllIcon style={{cursor: "pointer"}} onClick={handleOnClick}/></TableCell>
         </TableHead>
         <TableBody>
           {data.length && data.map((row) => (
