@@ -10,6 +10,8 @@ import { useContext, useEffect } from "react";
 import { DarkModeContext } from "./context/darkModeContext";
 import { useDispatch, useSelector } from "react-redux";
 import { getDataDb } from "./redux/actions";
+import Loading from "./components/Loading/Loading";
+//import List from "./components/table/Table";
 
 function App() {
   const { darkMode } = useContext(DarkModeContext);
@@ -52,7 +54,7 @@ function App() {
     </div>
   );
   else
-    return <div>cargando</div>
+    return <div><Loading/></div>
 }
 
 export default App;

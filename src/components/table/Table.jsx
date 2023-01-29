@@ -7,15 +7,30 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { getDataDb } from "../../redux/actions";
 import { Link } from "react-router-dom";
 import FeedIcon from '@mui/icons-material/Feed';
+import deleteDb from "../../controllers/deleteDb";
+
 
 const List = () => {
-  const data = useSelector(state => state.data)
   
-  const rows = [
+  const data = useSelector(state => state.data)
+  const [ id, setId ] = useState('')
+  const dispatch = useDispatch()
+
+  const handleDelete = (id) => {
+    //setData(data.filter((item) => item.id !== id));
+    console.log('id para borrar: ', id)
+    deleteDb(id)
+    alert('ingreso borrado')
+    dispatch(getDataDb())
+    //window.location.href = window.location.href;
+    //setId(id)
+  };
+  
+ const rows = [
     {
       id: 1143155,
       product: "Acer Nitro 5",
@@ -67,6 +82,7 @@ const List = () => {
       status: "Pending",
     },
   ];
+
   return (
     <TableContainer component={Paper} className="table">
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
@@ -77,8 +93,8 @@ const List = () => {
             <TableCell className="tableCell">Celular</TableCell>
             <TableCell className="tableCell">Link</TableCell>
             <TableCell className="tableCell">Detalles</TableCell>
-            <TableCell className="tableCell">C. de 1º aux.</TableCell>
-            <TableCell className="tableCell">Experiencia</TableCell>
+{/*             <TableCell className="tableCell">C. de 1º aux.</TableCell>
+            <TableCell className="tableCell">Experiencia</TableCell> */}
           </TableRow>
         </TableHead>
         <TableBody>
@@ -96,11 +112,20 @@ const List = () => {
                 <TableCell className="tableCell">{row.user}</TableCell>
               </a>
               
-              <TableCell className="tableCell"><Link to={`users/${row.id}`}><FeedIcon/></Link></TableCell>
-              <TableCell className="tableCell">{row.auxilios}</TableCell>
               <TableCell className="tableCell">
-                <span className={`status ${row.exp}`}>{row.exp}</span>
+                <div className="cellAction">
+                  <Link to={`/users/${row.id}`} style={{ textDecoration: "none" }}>
+                    <div className="viewButton">View</div>
+                  </Link>
+                  <div className="deleteButton" onClick={() => handleDelete(row.id, setId)}>
+                    Delete
+                  </div>
+                </div>
               </TableCell>
+             {/*  <TableCell className="tableCell">{row.auxilios}</TableCell> */}
+{/*               <TableCell className="tableCell">
+                <span className={`status ${row.exp}`}>{row.exp}</span>
+              </TableCell> */}
             </TableRow>
           ))}
         </TableBody>

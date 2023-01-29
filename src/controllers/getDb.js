@@ -18,6 +18,8 @@ export default async function getDb(){
             rescate: doc.data().rescate,
             user: doc.data().user,
             volunt: doc.data().volunt,
+            sugerencias: doc.data().sugerencias,
+            sobrevivio: doc.data().sobrevivio,
             id: doc.id
         }
         a.push(aux)        

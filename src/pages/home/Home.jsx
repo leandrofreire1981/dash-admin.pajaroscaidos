@@ -10,6 +10,7 @@ import TablaAtencion from "../../components/tablaAtencion/TablaAtencion";
 import TablaOrientacion from "../../components/tablaOrientacion/TablaOrientacion";
 import TablaAuxilios from "../../components/tablaAuxilios/TablaAuxilios";
 import TablaVolunt from "../../components/tablaVolunt/TablaVolunt";
+import TablaSobrevivio from "../../components/tablaSobrevivio/TablaSobrevivio";
 
 const Home = () => {
   return (
@@ -26,15 +27,16 @@ const Home = () => {
         <div className="charts">
           <TablaAtencion/>
           <TablaOrientacion/>
-          <TablaInformacion/>
+          <TablaSobrevivio />
         </div>
-          <div className="charts">
-            <TablaAuxilios/>
-            <TablaVolunt/>
-          </div>
+        <div className="charts">
+          <TablaInformacion/>
+          <TablaAuxilios/>
+          <TablaVolunt/>
+        </div>
         <div className="listContainer">
-          <div className="listTitle">Lista de encuestados</div>
-          <Table />
+          {/* <div className="listTitle">Lista de encuestados</div>
+          <Table /> */}
         </div>
       </div>
     </div>

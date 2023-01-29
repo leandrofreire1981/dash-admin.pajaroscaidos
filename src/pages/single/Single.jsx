@@ -5,11 +5,25 @@ import Chart from "../../components/chart/Chart";
 import List from "../../components/table/Table";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
+import TablaSingle from "../../components/tablaSingle/TablaSingle";
+
+const labels = [
+  "Ave rescatada",
+  "Como fue la experiencia",
+  "Sobrevivió el ave",
+  "Información clara",
+  "Resolvió la consulta",
+  "Curso de 1º aux.",
+  "Curso de volunt."
+]
+
+const labels2 = ["Sugerencias"]
 
 const Single = () => {
   const params =useParams()
   const { data } = useSelector(state => state)
   let user = data.find(r => r.id===params.userId)
+  let sugerencia = {rescate: user.sugerencias}
   console.log('single: ', user)
   return (
     <div className="single">
@@ -50,8 +64,12 @@ const Single = () => {
           </div> */}
         </div>
         <div className="bottom">
-        <h1 className="title">Last Transactions</h1>
-          <List/>
+        <h1 className="title">Respuestas del usuario</h1>
+         {/*  <List/> */}
+         <TablaSingle data={user} labels={labels} /> 
+         <br></br>
+         <TablaSingle data={sugerencia} labels={labels2} />
+         
         </div>
       </div>
     </div>
