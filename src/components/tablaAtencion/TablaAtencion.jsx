@@ -9,11 +9,17 @@ import 'chart.js/auto';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import { Bar, Pie } from "react-chartjs-2";
 import { useEffect } from "react";
-import { getDataDb } from "../../redux/actions";
+import { CLEAR_DATA, getDataDb } from "../../redux/actions";
 import { useState } from "react";
 
 
-let array = [0, 0, 0]
+
+const TablaAtencion = () => {
+  let dataDb = useSelector(state => state.data)
+  const dispatch = useDispatch()
+  const [datos, setDatos] = useState('')
+
+  let array = [0, 0, 0]
 
 function a(dataDb, setDatos) {
   dataDb.map(r => {
@@ -47,12 +53,10 @@ function a(dataDb, setDatos) {
     ],
   })
 }
-const TablaAtencion = () => {
-  let dataDb = useSelector(state => state.data)
-  const dispatch = useDispatch()
-  const [datos, setDatos] = useState('')
 
-useEffect(() => {a(dataDb, setDatos)}, [])
+useEffect(() => {
+  a(dataDb, setDatos)
+}, [])
    
 
  

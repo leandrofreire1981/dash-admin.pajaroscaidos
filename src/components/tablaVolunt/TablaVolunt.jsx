@@ -12,8 +12,12 @@ import { useEffect } from "react";
 import { getDataDb } from "../../redux/actions";
 import { useState } from "react";
 
+const TablaVolunt = () => {
+  let dataDb = useSelector(state => state.data)
+  const dispatch = useDispatch()
+  const [datos, setDatos] = useState('')
 
-let array = [0, 0, 0]
+  let array = [0, 0, 0]
 
 function a(dataDb, setDatos) {
   dataDb.map(r => {
@@ -47,10 +51,6 @@ function a(dataDb, setDatos) {
     ],
   })
 }
-const TablaVolunt = () => {
-  let dataDb = useSelector(state => state.data)
-  const dispatch = useDispatch()
-  const [datos, setDatos] = useState('')
 
 useEffect(() => {a(dataDb, setDatos)}, [])
    

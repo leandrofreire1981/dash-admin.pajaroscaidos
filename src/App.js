@@ -11,6 +11,9 @@ import { DarkModeContext } from "./context/darkModeContext";
 import { useDispatch, useSelector } from "react-redux";
 import { getDataDb } from "./redux/actions";
 import Loading from "./components/Loading/Loading";
+import Sugerencias from "./components/sugerencias/Sugerencias";
+import Auxilios from "./components/listasDeMails/Auxilios";
+import Volunt from "./components/listasDeMails/Volunt";
 //import List from "./components/table/Table";
 
 function App() {
@@ -32,7 +35,7 @@ function App() {
           <Route path="/">
             <Route index element={<Home />} />
             <Route path="login" element={<Login />} />
-            <Route path="users">
+            <Route path="encuestados">
               <Route index element={<List />} />
               <Route path=":userId" element={<Single />} />
               <Route
@@ -40,9 +43,25 @@ function App() {
                 element={<New inputs={userInputs} title="Add New User" />}
               />
             </Route>
-            <Route path="products">
-              <Route index element={<List />} />
-              <Route path=":productId" element={<Single />} />
+            <Route path="sugerencias">
+              <Route index element={<Sugerencias />} />
+              <Route path=":userId" element={<Single />} />
+              <Route
+                path="new"
+                element={<New inputs={productInputs} title="Add New Product" />}
+              />
+            </Route>
+            <Route path="auxilios">
+              <Route index element={<Auxilios />} />
+              <Route path=":userId" element={<Single />} />
+              <Route
+                path="new"
+                element={<New inputs={productInputs} title="Add New Product" />}
+              />
+            </Route>
+            <Route path="voluntariado">
+              <Route index element={<Volunt />} />
+              <Route path=":userId" element={<Single />} />
               <Route
                 path="new"
                 element={<New inputs={productInputs} title="Add New Product" />}

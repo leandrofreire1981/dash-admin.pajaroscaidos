@@ -1,4 +1,4 @@
-import "./table.scss";
+import "./sugerencias.scss";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -12,19 +12,25 @@ import { CLEAR_DATA, getDataDb } from "../../redux/actions";
 import { Link } from "react-router-dom";
 import FeedIcon from '@mui/icons-material/Feed';
 import deleteDb from "../../controllers/deleteDb";
+import Sidebar from "../sidebar/Sidebar";
+import Navbar from "../navbar/Navbar";
 
 
-const List = () => {
+const Sugerencias = () => {
   
   const data = useSelector(state => state.data)
+  const [ id, setId ] = useState('')
 
   const dispatch = useDispatch()
 
   const handleDelete = (id) => {
+    //setData(data.filter((item) => item.id !== id));
     console.log('id para borrar: ', id)
     deleteDb(id)
     alert('ingreso borrado')
     dispatch(getDataDb())
+    //window.location.href = window.location.href;
+    //setId(id)
   };
    useEffect(() => {
 /*     dispatch(getDataDb())
@@ -34,40 +40,37 @@ const List = () => {
   },[]) 
 
   return (
+    <div className="list">
+    <Sidebar/>
+    <div className="listContainer">
+      <Navbar/>
+      {/* <Datatable/> */}
+      
     <TableContainer component={Paper} className="table">
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
         <TableHead>
           <TableRow>
-            <TableCell className="tableCell">Nombre</TableCell>
-            <TableCell className="tableCell">E-mail</TableCell>
-            <TableCell className="tableCell">Celular</TableCell>
-            <TableCell className="tableCell">Link</TableCell>
-            <TableCell className="tableCell">Detalles</TableCell>
-{/*             <TableCell className="tableCell">C. de 1º aux.</TableCell>
-            <TableCell className="tableCell">Experiencia</TableCell> */}
+            <TableCell className="tableCell">Sugerencia</TableCell>
+
+
           </TableRow>
         </TableHead>
         <TableBody>
           {data.length && data.map((row) => (
-            <TableRow key={row.id}>
-              <TableCell className="tableCell">{row.full_name}</TableCell>
+              <TableRow key={row.id}>
               <TableCell className="tableCell">
                 <div className="cellWrapper">
-                {/*   <img src={row.img} alt="" className="image" /> */}
-                  {row.email}
+                  {row.sugerencias}
                 </div>
               </TableCell>
-              <TableCell className="tableCell">{row.celular}</TableCell>
-              <a href={row.user} >
-                <TableCell className="tableCell">{row.user}</TableCell>
-              </a>
+
               
               <TableCell className="tableCell">
                 <div className="cellAction">
                   <Link to={`/encuestados/${row.id}`} style={{ textDecoration: "none" }}>
                     <div className="viewButton">Ver</div>
                   </Link>
-                  <div className="deleteButton" onClick={() => handleDelete(row.id)}>
+                  <div className="deleteButton" onClick={() => handleDelete(row.id, setId)}>
                     Borrar
                   </div>
                 </div>
@@ -75,13 +78,15 @@ const List = () => {
              {/*  <TableCell className="tableCell">{row.auxilios}</TableCell> */}
 {/*               <TableCell className="tableCell">
                 <span className={`status ${row.exp}`}>{row.exp}</span>
-              </TableCell> */}
+            </TableCell> */}
             </TableRow>
           ))}
         </TableBody>
       </Table>
     </TableContainer>
+          </div>
+        </div>
   );
 };
 
-export default List;
+export default Sugerencias;

@@ -11,8 +11,19 @@ import TablaOrientacion from "../../components/tablaOrientacion/TablaOrientacion
 import TablaAuxilios from "../../components/tablaAuxilios/TablaAuxilios";
 import TablaVolunt from "../../components/tablaVolunt/TablaVolunt";
 import TablaSobrevivio from "../../components/tablaSobrevivio/TablaSobrevivio";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { CLEAR_DATA, getDataDb } from "../../redux/actions";
 
 const Home = () => {
+  const dispatch = useDispatch()
+  useEffect(() => {
+/*     dispatch(getDataDb())
+    return () => dispatch({
+      type: CLEAR_DATA
+    }) */
+  },[]) 
+
   return (
     <div className="home">
       <Sidebar />
@@ -35,8 +46,8 @@ const Home = () => {
           <TablaVolunt/>
         </div>
         <div className="listContainer">
-          {/* <div className="listTitle">Lista de encuestados</div>
-          <Table /> */}
+{/*           <div className="listTitle">Lista de encuestados</div>
+          <Table /> */} 
         </div>
       </div>
     </div>

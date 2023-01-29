@@ -1,4 +1,5 @@
-import { GET_DATA_DB } from "./actions";
+import { GET_DATA_DB, CLEAR_DATA } from "./actions";
+
 
 const initialState = {
     data: ''
@@ -10,6 +11,12 @@ export default function rootReducer(state = initialState, action){
             console.log('datos DB: ', action.payload)
             return {
                 ...state, data: action.payload
+            }
+        
+        case CLEAR_DATA:
+            console.log('limpiando estado')
+            return {
+                data: ''
             }
     
         default:

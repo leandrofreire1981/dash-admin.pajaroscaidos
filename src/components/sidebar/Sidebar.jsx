@@ -14,6 +14,8 @@ import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined
 import { Link } from "react-router-dom";
 import { DarkModeContext } from "../../context/darkModeContext";
 import { useContext } from "react";
+import MessageIcon from '@mui/icons-material/Message';
+import SchoolIcon from '@mui/icons-material/School';
 
 const Sidebar = () => {
   const { dispatch } = useContext(DarkModeContext);
@@ -27,22 +29,24 @@ const Sidebar = () => {
       <hr />
       <div className="center">
         <ul>
-          <p className="title">MAIN</p>
+          <p className="title">Menú</p>
           <li>
-            <DashboardIcon className="icon" />
-            <span>Dashboard</span>
+            <Link to='/' style={{ textDecoration: "none" }}>
+              <DashboardIcon className="icon" />
+              <span>Página principal</span>
+            </Link>
           </li>
-          <p className="title">LISTS</p>
-          <Link to="/users" style={{ textDecoration: "none" }}>
+          <p className="title">OPCIONES</p>
+          <Link to="/encuestados" style={{ textDecoration: "none" }}>
             <li>
               <PersonOutlineIcon className="icon" />
-              <span>Users</span>
+              <span>Encuestados</span>
             </li>
           </Link>
-          <Link to="/products" style={{ textDecoration: "none" }}>
+          <Link to="/sugerencias" style={{ textDecoration: "none" }}>
             <li>
-              <StoreIcon className="icon" />
-              <span>Products</span>
+              <MessageIcon className="icon" />
+              <span>Sugerencias</span>
             </li>
           </Link>
           <li>
@@ -53,14 +57,18 @@ const Sidebar = () => {
             <LocalShippingIcon className="icon" />
             <span>Delivery</span>
           </li>
-          <p className="title">USEFUL</p>
+          <p className="title">LISTAS DE MAILS</p>
           <li>
-            <InsertChartIcon className="icon" />
-            <span>Stats</span>
+            <SchoolIcon className="icon" />
+            <Link to='/auxilios' style={{ textDecoration: "none"}}>
+              <span>Curso 1º aux.</span>
+            </Link>
           </li>
           <li>
-            <NotificationsNoneIcon className="icon" />
-            <span>Notifications</span>
+            <SchoolIcon className="icon" />
+            <Link to='/voluntariado' style={{ textDecoration: "none"}}>
+              <span>Curso volunt.</span>
+            </Link>
           </li>
           <p className="title">SERVICE</p>
           <li>

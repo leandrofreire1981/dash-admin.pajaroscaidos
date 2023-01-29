@@ -6,6 +6,7 @@ import List from "../../components/table/Table";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import TablaSingle from "../../components/tablaSingle/TablaSingle";
+import { useEffect } from "react";
 
 const labels = [
   "Ave rescatada",
@@ -21,10 +22,15 @@ const labels2 = ["Sugerencias"]
 
 const Single = () => {
   const params =useParams()
+  
   const { data } = useSelector(state => state)
   let user = data.find(r => r.id===params.userId)
   let sugerencia = {rescate: user.sugerencias}
   console.log('single: ', user)
+
+  useEffect(() => {
+
+  }, [])
   return (
     <div className="single">
       <Sidebar />
@@ -32,7 +38,7 @@ const Single = () => {
         <Navbar />
         <div className="top">
           <div className="left">
-            <div className="editButton">Edit</div>
+           {/*  <div className="editButton">Edit</div> */}
             <h1 className="title">Información individual</h1>
             <div className="item">
 {/*               <img
