@@ -12,6 +12,7 @@ import { CLEAR_DATA, getDataDb } from "../../redux/actions";
 import { Link } from "react-router-dom";
 import FeedIcon from '@mui/icons-material/Feed';
 import deleteDb from "../../controllers/deleteDb";
+import swal from 'sweetalert';
 
 
 const List = () => {
@@ -20,10 +21,15 @@ const List = () => {
 
   const dispatch = useDispatch()
 
+  const handleProbar = () => {
+    swal("Encuestado borrado con éxito");
+
+  }
+
   const handleDelete = (id) => {
     console.log('id para borrar: ', id)
     deleteDb(id)
-    alert('ingreso borrado')
+    swal("Encuestado borrado con éxito");
     dispatch(getDataDb())
   };
    useEffect(() => {
