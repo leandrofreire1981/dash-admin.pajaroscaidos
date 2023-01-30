@@ -66,9 +66,11 @@ const MalaAtencion = () => {
                 </div>
               </TableCell>
               <TableCell className="tableCell">{row.celular}</TableCell>
-              <a href={row.user} >
-                <TableCell className="tableCell">{row.user}</TableCell>
-              </a>
+              <TableCell className="tableCell">
+                <a href={row.user} style={{ textDecoration: "none"}}>
+                  {row.user}
+                </a>
+              </TableCell>
               
               <TableCell className="tableCell">
                 <div className="cellAction">
