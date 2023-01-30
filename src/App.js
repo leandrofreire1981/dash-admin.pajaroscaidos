@@ -14,6 +14,10 @@ import Loading from "./components/Loading/Loading";
 import Sugerencias from "./components/sugerencias/Sugerencias";
 import Auxilios from "./components/listasDeMails/Auxilios";
 import Volunt from "./components/listasDeMails/Volunt";
+import Sobrevivio from "./components/negativas/Sobrevivio";
+import InfoNoClara from "./components/negativas/InfoNoClara";
+import ConsultaNoResuelta from "./components/negativas/ConsultaNoResuelta";
+import MalaAtencion from "./components/negativas/MalaAtencion";
 //import List from "./components/table/Table";
 
 function App() {
@@ -64,8 +68,35 @@ function App() {
               <Route path=":userId" element={<Single />} />
               <Route
                 path="new"
-                element={<New inputs={productInputs} title="Add New Product" />}
-              />
+                element={<New inputs={productInputs} title="Add New Product" />}/>
+            </Route>
+            <Route path="sobrevivio">
+              <Route index element={<Sobrevivio />} />
+              <Route path=":userId" element={<Single />} />
+              <Route
+                path="new"
+                element={<New inputs={productInputs} title="Add New Product" />}/>
+            </Route>
+            <Route path="infonoclara">
+              <Route index element={<InfoNoClara />} />
+              <Route path=":userId" element={<Single />} />
+              <Route
+                path="new"
+                element={<New inputs={productInputs} title="Add New Product" />}/>
+            </Route>
+            <Route path="consultanoresuelta">
+              <Route index element={<ConsultaNoResuelta />} />
+              <Route path=":userId" element={<Single />} />
+              <Route
+                path="new"
+                element={<New inputs={productInputs} title="Add New Product" />}/>
+            </Route>
+            <Route path="atencion">
+              <Route index element={<MalaAtencion />} />
+              <Route path=":userId" element={<Single />} />
+              <Route
+                path="new"
+                element={<New inputs={productInputs} title="Add New Product" />}/>
             </Route>
           </Route>
         </Routes>

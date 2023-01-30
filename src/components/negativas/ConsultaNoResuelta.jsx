@@ -1,4 +1,4 @@
-import "./sugerencias.scss";
+import "./comun.scss";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -16,21 +16,18 @@ import Sidebar from "../sidebar/Sidebar";
 import Navbar from "../navbar/Navbar";
 
 
-const Sugerencias = () => {
+const ConsultaNoResuelta = () => {
   
-  const data = useSelector(state => state.data)
-  const [ id, setId ] = useState('')
+  const dataDb = useSelector(state => state.data)
+  let data = dataDb.filter(r => r.orientacion === 'no')
 
   const dispatch = useDispatch()
 
   const handleDelete = (id) => {
-    //setData(data.filter((item) => item.id !== id));
     console.log('id para borrar: ', id)
     deleteDb(id)
     alert('ingreso borrado')
     dispatch(getDataDb())
-    //window.location.href = window.location.href;
-    //setId(id)
   };
    useEffect(() => {
 /*     dispatch(getDataDb())
@@ -41,36 +38,44 @@ const Sugerencias = () => {
 
   return (
     <div className="list">
-    <Sidebar/>
-    <div className="listContainer">
-      <Navbar/>
-      {/* <Datatable/> */}
-      
+      <Sidebar/>
+      <div className="listContainer">
+        <Navbar/>
+
     <TableContainer component={Paper} className="table">
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
         <TableHead>
           <TableRow>
-            <TableCell className="tableCell">Sugerencias</TableCell>
-
-
+            <TableCell className="tableCell">Nombre</TableCell>
+            <TableCell className="tableCell">E-mail</TableCell>
+            <TableCell className="tableCell">Celular</TableCell>
+            <TableCell className="tableCell">Link</TableCell>
+            <TableCell className="tableCell">Detalles</TableCell>
+{/*             <TableCell className="tableCell">C. de 1º aux.</TableCell>
+            <TableCell className="tableCell">Experiencia</TableCell> */}
           </TableRow>
         </TableHead>
         <TableBody>
           {data.length && data.map((row) => (
               <TableRow key={row.id}>
+              <TableCell className="tableCell">{row.full_name}</TableCell>
               <TableCell className="tableCell">
                 <div className="cellWrapper">
-                  {row.sugerencias}
+                {/*   <img src={row.img} alt="" className="image" /> */}
+                  {row.email}
                 </div>
               </TableCell>
-
+              <TableCell className="tableCell">{row.celular}</TableCell>
+              <a href={row.user} >
+                <TableCell className="tableCell">{row.user}</TableCell>
+              </a>
               
               <TableCell className="tableCell">
                 <div className="cellAction">
                   <Link to={`/encuestados/${row.id}`} style={{ textDecoration: "none" }}>
                     <div className="viewButton">Ver</div>
                   </Link>
-                  <div className="deleteButton" onClick={() => handleDelete(row.id, setId)}>
+                  <div className="deleteButton" onClick={() => handleDelete(row.id)}>
                     Borrar
                   </div>
                 </div>
@@ -89,4 +94,4 @@ const Sugerencias = () => {
   );
 };
 
-export default Sugerencias;
+export default ConsultaNoResuelta;

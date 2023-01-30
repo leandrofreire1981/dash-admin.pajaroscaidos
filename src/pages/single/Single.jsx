@@ -10,15 +10,18 @@ import { useEffect } from "react";
 
 const labels = [
   "Ave rescatada",
-  "Como fue la experiencia",
+ /*  "Como fue la experiencia", */
   "Sobrevivió el ave",
   "Información clara",
   "Resolvió la consulta",
+  "Como fue la atención",
   "Curso de 1º aux.",
   "Curso de volunt."
 ]
 
 const labels2 = ["Sugerencias"]
+
+
 
 const Single = () => {
   const params =useParams()
@@ -26,6 +29,7 @@ const Single = () => {
   const { data } = useSelector(state => state)
   let user = data.find(r => r.id===params.userId)
   let sugerencia = {rescate: user.sugerencias}
+  let exp = {rescate: user.exp}
   console.log('single: ', user)
 
   useEffect(() => {
@@ -73,6 +77,8 @@ const Single = () => {
         <h1 className="title">Respuestas del usuario</h1>
          {/*  <List/> */}
          <TablaSingle data={user} labels={labels} /> 
+         <br></br>
+         <TablaSingle data={exp} labels={["Como fue la experiencia"]} />
          <br></br>
          <TablaSingle data={sugerencia} labels={labels2} />
          

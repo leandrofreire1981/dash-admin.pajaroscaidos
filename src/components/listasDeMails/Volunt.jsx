@@ -39,7 +39,7 @@ const Volunt = () => {
     <TableContainer component={Paper} className="table">
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
         <TableHead>
-            <TableCell className="tableCell">Emails de personas dispuestas a tomar el curso de voluntariado:</TableCell>
+            <TableCell className="tableCell">Mails de personas dispuestas a tomar el curso de voluntariado:</TableCell>
         </TableHead>
         <TableBody>
           {data.length && data.map((row) => (

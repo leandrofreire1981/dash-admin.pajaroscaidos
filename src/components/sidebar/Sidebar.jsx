@@ -35,7 +35,7 @@ const Sidebar = () => {
           <li>
             <Link to='/' style={{ textDecoration: "none" }}>
               <FlutterDashIcon className="icon" />
-              <span>Página principal</span>
+              <span>Gráficas</span>
             </Link>
           </li>
           <p className="title">OPCIONES</p>
@@ -67,19 +67,27 @@ const Sidebar = () => {
           <p className="title">NEGATIVAS</p>
           <li>
             <WarningAmberIcon className="icon" />
-            <span>¿El ave no sobrevivió</span>
+            <Link to='/sobrevivio' style={{ textDecoration: "none" }} >
+              <span>El ave no sobrevivió</span>
+            </Link>
           </li>
           <li>
             <WarningAmberIcon className="icon" />
-            <span>Información no fue clara</span>
+            <Link to='/infonoclara' style={{textDecoration: "none"}} >
+              <span>Información no fue clara</span>
+            </Link>
           </li>
           <li>
             <WarningAmberIcon className="icon" />
-            <span>Consulta no resuelta</span>
+            <Link to='/consultanoresuelta' style={{ textDecoration: "none" }} >
+              <span>Consulta no resuelta</span>
+            </Link>
           </li>
           <li>
             <WarningAmberIcon className="icon" />
-            <span>Mala atención</span>
+            <Link to='/atencion' style={{ textDecoration: "none" }} >
+              <span>Mala atención</span>
+            </Link>
           </li>
           <p className="title">USER</p>
 
