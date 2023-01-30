@@ -31,7 +31,7 @@ const Sidebar = () => {
       <hr />
       <div className="center">
         <ul>
-          <p className="title">Menú</p>
+          <p className="title">MENÚ</p>
           <li>
             <Link to='/' style={{ textDecoration: "none" }}>
               <FlutterDashIcon className="icon" />
@@ -89,12 +89,12 @@ const Sidebar = () => {
               <span>Mala atención</span>
             </Link>
           </li>
-          <p className="title">USER</p>
+          <p className="title">MODOS DE VISUALIZACIÓN</p> 
 
-          <li>
+{/*           <li>
             <ExitToAppIcon className="icon" />
             <span>Logout</span>
-          </li>
+          </li> */}
         </ul>
       </div>
       <div className="bottom">
