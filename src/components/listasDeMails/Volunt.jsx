@@ -43,8 +43,10 @@ const Volunt = () => {
         </TableHead>
         <TableBody>
           {data.length && data.map((row) => (
-            <TableRow key={row.id} className='cellWrapper'>
-                {row.email},
+            <TableRow key={row.id} className='tableCell' >
+                <div style={{ "padding-left": "15px"}}>
+                  {row.email},
+                </div>
             </TableRow>
           ))}
         </TableBody>
