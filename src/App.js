@@ -38,8 +38,8 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/">
-          <Route index element={<Auth />} />
-            {/* <Route index element={<Home />} /> */}
+          {/* <Route index element={<Auth />} /> */}
+            <Route index element={<Home />} /> 
             <Route path="login" element={<Login />} />
             <Route path="encuestados">
               <Route index element={<List />} />
