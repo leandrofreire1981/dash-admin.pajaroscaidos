@@ -1,9 +1,15 @@
 import { fb } from "../firebase";
 import { collection, getDocs, getFirestore } from 'firebase/firestore'
+import { GET_ADMIN } from "../redux/actions";
 
 export default async function getDb(){
     const fireDb = getFirestore(fb)
-    let a = []
+    let data = []
+    let dataAdmin = []
+    const admin = await getDocs(collection(fireDb, "administrador"))
+    admin.forEach(r => {
+        dataAdmin.push(r.data().email)
+    })
     const querySnapshot = await getDocs(collection(fireDb, "encuestados"))
     querySnapshot.forEach(doc => { 
         let aux = {
@@ -22,7 +28,7 @@ export default async function getDb(){
             sobrevivio: doc.data().sobrevivio,
             id: doc.id
         }
-        a.push(aux)        
+        data.push(aux)        
      })    
-    return a;
+    return { data, dataAdmin }
 }

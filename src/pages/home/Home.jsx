@@ -12,18 +12,28 @@ import TablaAuxilios from "../../components/tablaAuxilios/TablaAuxilios";
 import TablaVolunt from "../../components/tablaVolunt/TablaVolunt";
 import TablaSobrevivio from "../../components/tablaSobrevivio/TablaSobrevivio";
 import { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { CLEAR_DATA, getDataDb } from "../../redux/actions";
+import { useNavigate } from "react-router-dom";
+import { auth } from "../../firebase";
+import Auth from "../../components/auth/Auth";
+import Loading from "../../components/Loading/Loading";
 
 const Home = () => {
-  const dispatch = useDispatch()
+  const navigate = useNavigate()
+  function validate(){
+    if(!auth.currentUser)
+      navigate('/')
+  }
   useEffect(() => {
-/*     dispatch(getDataDb())
-    return () => dispatch({
-      type: CLEAR_DATA
-    }) */
+    setTimeout(() => validate(), 5000)
+      
   },[]) 
-
+  if(!auth.currentUser)
+    return (<div>
+      <Loading />
+      
+    </div>)
   return (
     <div className="home">
       <Sidebar />

@@ -1,8 +1,9 @@
-import { GET_DATA_DB, CLEAR_DATA } from "./actions";
+import { GET_DATA_DB, CLEAR_DATA, GET_ADMIN } from "./actions";
 
 
 const initialState = {
-    data: ''
+    data: [],
+    dataAdmin: []
 }
 
 export default function rootReducer(state = initialState, action){
@@ -17,6 +18,11 @@ export default function rootReducer(state = initialState, action){
             console.log('limpiando estado')
             return {
                 data: ''
+            }
+        
+        case GET_ADMIN:
+            return {
+                ...state, dataAdmin: action.payload
             }
     
         default:

@@ -1,65 +1,52 @@
 import React from 'react'
 import { auth } from '../../firebase'
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup , GoogleAuthProvider, signOut} from 'firebase/auth'
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup , GoogleAuthProvider} from 'firebase/auth'
 import { useState } from 'react'
+import { useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 
 
 export default function Auth() {
-    const [ input, setInput ] = useState({
-        email: '',
-        password: ''
-    })
-
-    const register = async (email, password) => {
-        const response = await createUserWithEmailAndPassword(auth, email, password);
-        return response;
-    }
-
-    const loginWithEmail = async (email, password) => {
-        const response = await signInWithEmailAndPassword(auth, email, password);
-        return response;
-    }
-
+    const  dataAdmin  = useSelector(state => state.dataAdmin)
+    console.log('auth: ', dataAdmin)
+    const navigate = useNavigate()
     const loginWithGoogle = async () => {
         const response = new GoogleAuthProvider();
-        return await signInWithPopup(auth, response);
+        let login = await signInWithPopup(auth, response);
+        console.log('login ', auth.currentUser.email)
+        if(dataAdmin.includes(auth.currentUser.email)){
+            console.log('los mails coinciden')
+            navigate('/home')
+        }
+        else{
+            console.log('los mails no coinciden')
+            await auth.signOut()
+        }
+
     }
     
-    async function handleOnClick(e){
-        const response = await register(input.email, input.password);
-        console.log('response: ', response);
-    }
-
-    function handleOnChange(e){
-        setInput({...input, [e.target.name]: e.target.value})
-    }
-
     async function handleGoogle(e){
         const response = await loginWithGoogle()
         console.log('google: ', response)
     }
 
-    async function handleEmail(){
-        const response = await loginWithEmail(auth, input.email, input.password);
-        console.log('email: ', response)
-    }
-
     async function logOut(){
-        const response = await signOut(auth);
+        const response = await auth.signOut(); //fotografoleandro81@gmail.com
         console.log('log out:', response)
         return response;
     }
 
+    async function handleCurrentUser(){
+        //await getDb()
+        console.log('current user: ', auth.currentUser);
+        //console.log('usuarios: ', auth)
+    }
+
   return (
     <div>
-        <label >Email</label>
-        <input type='email' name='email' value={input.email} onChange={handleOnChange} />
-        <label>Contraseña</label>
-        <input type='password' name='password' value={input.password} onChange={handleOnChange} />
-        <button onClick={handleOnClick} >registrarse</button>
         <button onClick={handleGoogle}>google</button>
-        <button onClick={handleEmail}>Email</button>
         <button onClick={logOut}>salir</button>
+        <button onClick={handleCurrentUser}>usuario</button>
     </div>
   )
 }
