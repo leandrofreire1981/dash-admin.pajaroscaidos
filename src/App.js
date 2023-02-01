@@ -18,6 +18,7 @@ import Sobrevivio from "./components/negativas/Sobrevivio";
 import InfoNoClara from "./components/negativas/InfoNoClara";
 import ConsultaNoResuelta from "./components/negativas/ConsultaNoResuelta";
 import MalaAtencion from "./components/negativas/MalaAtencion";
+import Auth from "./components/auth/Auth";
 //import List from "./components/table/Table";
 
 function App() {
@@ -37,7 +38,8 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/">
-            <Route index element={<Home />} />
+          <Route index element={<Auth />} />
+            {/* <Route index element={<Home />} /> */}
             <Route path="login" element={<Login />} />
             <Route path="encuestados">
               <Route index element={<List />} />
