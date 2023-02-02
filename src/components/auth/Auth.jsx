@@ -46,12 +46,15 @@ export default function Auth() {
     <div className='container'>
         <div className='subcontainer'>
             <p className='title1'>
-                Bienveniso al Administrador de encuestas
+                Bienvenido al Administrador de encuestas 
+            </p>
+            <p className='title1'>
+                Pájaros Caidos
             </p>
             <p className='title2'>
-                Ingrese con su cuenta de google
+                Ingrese con su cuenta registrada de google
             </p>
-            <button onClick={handleGoogle} className='button'>google</button>
+            <button onClick={handleGoogle} className='button'>Ingresar</button>
 {/*             <button onClick={logOut} className='button'>salir</button>
             <button onClick={handleCurrentUser} className='button'>usuario</button> */}
         </div>

@@ -31,7 +31,7 @@ const Sidebar = () => {
   return (
     <div className="sidebar">
       <div className="top">
-        <Link to="/" style={{ textDecoration: "none" }}>
+        <Link to="/home" style={{ textDecoration: "none" }}>
           <span className="logo">Pájaros Caidos</span>
         </Link>
       </div>
@@ -40,7 +40,7 @@ const Sidebar = () => {
         <ul>
           <p className="title">MENÚ</p>
           <li>
-            <Link to='/' style={{ textDecoration: "none" }}>
+            <Link to='/home' style={{ textDecoration: "none" }}>
               <FlutterDashIcon className="icon" />
               <span>Gráficas</span>
             </Link>
