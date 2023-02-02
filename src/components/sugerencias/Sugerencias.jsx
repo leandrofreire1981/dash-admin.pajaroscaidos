@@ -9,35 +9,41 @@ import Paper from "@mui/material/Paper";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { CLEAR_DATA, getDataDb } from "../../redux/actions";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import FeedIcon from '@mui/icons-material/Feed';
 import deleteDb from "../../controllers/deleteDb";
 import Sidebar from "../sidebar/Sidebar";
 import Navbar from "../navbar/Navbar";
-
+import { auth } from "../../firebase";
+import Loading from "../Loading/Loading";
 
 const Sugerencias = () => {
-  
+  const navigate = useNavigate()
   const data = useSelector(state => state.data)
   const [ id, setId ] = useState('')
 
   const dispatch = useDispatch()
 
   const handleDelete = (id) => {
-    //setData(data.filter((item) => item.id !== id));
     console.log('id para borrar: ', id)
     deleteDb(id)
     alert('ingreso borrado')
     dispatch(getDataDb())
-    //window.location.href = window.location.href;
-    //setId(id)
   };
-   useEffect(() => {
-/*     dispatch(getDataDb())
-    return () => dispatch({
-      type: CLEAR_DATA
-    }) */
+
+  function validate(){
+    if(!auth.currentUser)
+      navigate('/')
+  }
+
+  useEffect(() => {
+    setTimeout(() => {
+      validate()
+    }, 5000);
   },[]) 
+
+  if(!auth.currentUser)
+    return <Loading />
 
   return (
     <div className="list">

@@ -9,26 +9,36 @@ import Paper from "@mui/material/Paper";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { CLEAR_DATA, getDataDb } from "../../redux/actions";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import FeedIcon from '@mui/icons-material/Feed';
 import deleteDb from "../../controllers/deleteDb";
 import Sidebar from "../sidebar/Sidebar";
 import Navbar from "../navbar/Navbar";
+import { auth } from "../../firebase";
+import Loading from "../Loading/Loading";
 
 
 const Volunt = () => {
-  
+  const navigate = useNavigate()
   const dataDb = useSelector(state => state.data)
   const dispatch = useDispatch()
 
   let data = dataDb.filter(r => r.volunt === 'si' || r.volunt === 'Tal vez')
-   useEffect(() => {
-/*     dispatch(getDataDb())
-    return () => dispatch({
-      type: CLEAR_DATA
-    }) */
+  
+  function validate(){
+    if(!auth.currentUser)
+      navigate('/')
+  }
+
+  useEffect(() => {
+    setTimeout(() => {
+      validate()
+    }, 5000);
   },[]) 
 
+  if(!auth.currentUser)
+    return <Loading />
+    
   return (
     <div className="list">
     <Sidebar/>

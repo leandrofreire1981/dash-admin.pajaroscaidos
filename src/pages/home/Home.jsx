@@ -16,7 +16,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { CLEAR_DATA, getDataDb } from "../../redux/actions";
 import { useNavigate } from "react-router-dom";
 import { auth } from "../../firebase";
-import Auth from "../../components/auth/Auth";
 import Loading from "../../components/Loading/Loading";
 
 const Home = () => {
