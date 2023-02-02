@@ -4,7 +4,7 @@ import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithP
 import { useState } from 'react'
 import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
-
+import './auth.scss'
 
 export default function Auth() {
     const  dataAdmin  = useSelector(state => state.dataAdmin)
@@ -43,10 +43,18 @@ export default function Auth() {
     }
 
   return (
-    <div>
-        <button onClick={handleGoogle}>google</button>
-        <button onClick={logOut}>salir</button>
-        <button onClick={handleCurrentUser}>usuario</button>
+    <div className='container'>
+        <div className='subcontainer'>
+            <p className='title1'>
+                Bienveniso al Administrador de encuestas
+            </p>
+            <p className='title2'>
+                Ingrese con su cuenta de google
+            </p>
+            <button onClick={handleGoogle} className='button'>google</button>
+{/*             <button onClick={logOut} className='button'>salir</button>
+            <button onClick={handleCurrentUser} className='button'>usuario</button> */}
+        </div>
     </div>
   )
 }
