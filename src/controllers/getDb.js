@@ -13,19 +13,20 @@ export default async function getDb(){
     const querySnapshot = await getDocs(collection(fireDb, "encuestados"))
     querySnapshot.forEach(doc => { 
         let aux = {
-            full_name: doc.data().full_name,
-            atencion: doc.data().atencion,
             auxilios: doc.data().auxilios,
-            celular: doc.data().celular,
+            ciudad: doc.data().ciudad,
+            edad: doc.data().edad,
             email: doc.data().email,
             exp: doc.data().exp,
-            info: doc.data().info,
-            orientacion: doc.data().orientacion,
+            infoClara: doc.data().infoClara,
+            infoClaraRes: doc.data().infoClaraRes,
+            infoPrecisa: doc.data().infoPrecisa,
+            infoPrecisaRes: doc.data().infoPrecisaRes,
+            name: doc.data().name,
             rescate: doc.data().rescate,
+            sugerencias: doc.data().sugerencias,
             user: doc.data().user,
             volunt: doc.data().volunt,
-            sugerencias: doc.data().sugerencias,
-            sobrevivio: doc.data().sobrevivio,
             id: doc.id
         }
         data.push(aux)        

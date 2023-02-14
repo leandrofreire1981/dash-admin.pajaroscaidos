@@ -20,6 +20,8 @@ import Loading from "../../components/Loading/Loading";
 
 const Home = () => {
   const navigate = useNavigate()
+  const { data } = useSelector(state => state)
+  console.log('home: ', data)
   function validate(){
     if(!auth.currentUser)
       navigate('/')
@@ -45,14 +47,16 @@ const Home = () => {
           <Widget type="balance" />
         </div> */}
         <div className="charts">
-          <TablaAtencion/>
+          <Chart dataDb={data} subData={'infoClara'} label={'La información fue clara?'}/> 
+          <Chart dataDb={data} subData={'infoPrecisa'} label={'La información fue Precisa?'}/>
+{/*           <TablaAtencion/>
           <TablaOrientacion/>
-          <TablaSobrevivio />
+          <TablaSobrevivio /> */}
         </div>
         <div className="charts">
-          <TablaInformacion/>
+{/*           <TablaInformacion/>
           <TablaAuxilios/>
-          <TablaVolunt/>
+          <TablaVolunt/> */}
         </div>
         <div className="listContainer">
 {/*           <div className="listTitle">Lista de encuestados</div>

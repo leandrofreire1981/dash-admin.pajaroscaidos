@@ -22,9 +22,9 @@ const TablaOrientacion = () => {
 function a(dataDb, setDatos) {
   dataDb.map(r => {
     console.log('asdfasdfasdf')
-  if(r.orientacion === 'si')
+  if(r['orientacion'] === 'si')
     array[0]=array[0]+1
-  if(r.orientacion === 'no')
+  if(r['orientacion'] === 'no')
     array[1]=array[1]+1
   })
   

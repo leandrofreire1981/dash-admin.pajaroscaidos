@@ -9,26 +9,33 @@ import 'chart.js/auto';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import { Bar, Pie } from "react-chartjs-2";
 import { useEffect } from "react";
-import { getDataDb } from "../../redux/actions";
+import { CLEAR_DATA, getDataDb } from "../../redux/actions";
 import { useState } from "react";
+import { useParams } from "react-router-dom";
 
 
-let array = [0, 0]
 
-function a(dataDb, setDatos) {
+const Chart = (props) => {
+  const { dataDb, subData, label } = props
+ console.log('chart: ')
+  const dispatch = useDispatch()
+  const [datos, setDatos] = useState('')
+
+  let array = [0, 0, 0]
+
+function a() {
   dataDb.map(r => {
-    console.log('asdfasdfasdf')
-  if(r.orientacion === 'si')
+  if(r[subData]=== 'si')
     array[0]=array[0]+1
-  if(r.orientacion === 'no')
+  if(r[subData] === 'no')
     array[1]=array[1]+1
   })
   
   setDatos( {
-    labels: [`Si: ${array[0]}`, `No: ${array[1]}`],
+    labels: [`si: ${array[0]}`, `no: ${array[1]}`],
     datasets: [
       {
-        label: '# of Votes',
+        label: '# de votos',
         backgroundColor: [
           'rgba(0, 255, 0, 0.5)',
           'rgba(0, 0, 255, 0.5)',
@@ -45,24 +52,22 @@ function a(dataDb, setDatos) {
     ],
   })
 }
-const Featured = () => {
-  let dataDb = useSelector(state => state.data)
-  const dispatch = useDispatch()
-  const [datos, setDatos] = useState('')
 
-useEffect(() => {a(dataDb, setDatos)}, [])
+useEffect(() => {
+  a()
+}, [])
    
 
  
 
-    const opciones= {
+  const opciones= {
       maintainAspectRatio: false,
       responsive: true
     }
  // if(datos)
   return(
     <div className="featured">
-      ¿La orientación resolvió tu consulta principal?
+      {label}
       {dataDb && datos && <Pie data={datos}/>  }
     </div>
   )
@@ -70,4 +75,4 @@ useEffect(() => {a(dataDb, setDatos)}, [])
 
 };
 
-export default Featured;
+export default Chart;
