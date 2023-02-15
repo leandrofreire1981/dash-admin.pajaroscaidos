@@ -56,7 +56,7 @@ const List = () => {
         <TableBody>
           {data.length && data.map((row) => (
             <TableRow key={row.id}>
-              <TableCell className="tableCell">{row.full_name}</TableCell>
+              <TableCell className="tableCell">{row.name}</TableCell>
               <TableCell className="tableCell">
                 <div className="cellWrapper">
                 {/*   <img src={row.img} alt="" className="image" /> */}

@@ -72,12 +72,12 @@ const Sidebar = () => {
             </Link>
           </li>
           <p className="title">NEGATIVAS</p>
-          <li>
+{/*           <li>
             <WarningAmberIcon className="icon" />
             <Link to='/sobrevivio' style={{ textDecoration: "none" }} >
               <span>El ave no sobrevivió</span>
             </Link>
-          </li>
+          </li> */}
           <li>
             <WarningAmberIcon className="icon" />
             <Link to='/infonoclara' style={{textDecoration: "none"}} >
@@ -87,15 +87,15 @@ const Sidebar = () => {
           <li>
             <WarningAmberIcon className="icon" />
             <Link to='/consultanoresuelta' style={{ textDecoration: "none" }} >
-              <span>Consulta no resuelta</span>
+              <span>La información no fue precisa</span>
             </Link>
           </li>
-          <li>
+{/*           <li>
             <WarningAmberIcon className="icon" />
             <Link to='/atencion' style={{ textDecoration: "none" }} >
               <span>Mala atención</span>
             </Link>
-          </li>
+          </li> */}
           <p className="title">MODOS DE VISUALIZACIÓN</p> 
 
           <li>

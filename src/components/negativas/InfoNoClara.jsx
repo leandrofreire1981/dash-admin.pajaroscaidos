@@ -21,7 +21,7 @@ import Loading from "../Loading/Loading";
 const InfoNoClara = () => {
   const navigate = useNavigate()
   const dataDb = useSelector(state => state.data)
-  let data = dataDb.filter(r => r.info === 'no')
+  let data = dataDb.filter(r => r.infoClara === 'no')
 
   const dispatch = useDispatch()
 
@@ -68,7 +68,7 @@ const InfoNoClara = () => {
         <TableBody>
           {data.length && data.map((row) => (
               <TableRow key={row.id}>
-              <TableCell className="tableCell">{row.full_name}</TableCell>
+              <TableCell className="tableCell">{row.name}</TableCell>
               <TableCell className="tableCell">
                 <div className="cellWrapper">
                 {/*   <img src={row.img} alt="" className="image" /> */}
