@@ -25,6 +25,7 @@ export default async function getDb(){
             name: doc.data().name,
             rescate: doc.data().rescate,
             sugerencias: doc.data().sugerencias,
+            sugerenciasRes: doc.data().sugerenciasRes,
             user: doc.data().user,
             volunt: doc.data().volunt,
             id: doc.id

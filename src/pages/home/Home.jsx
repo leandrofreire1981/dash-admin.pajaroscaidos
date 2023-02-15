@@ -47,13 +47,16 @@ const Home = () => {
           <Widget type="balance" />
         </div> */}
         <div className="charts">
-          <Chart dataDb={data} subData={'infoClara'} label={'La información fue clara?'}/> 
-          <Chart dataDb={data} subData={'infoPrecisa'} label={'La información fue Precisa?'}/>
+          <Chart dataDb={data} subData={'infoClara'} label={'¿La información fue clara?'}/> 
+          <Chart dataDb={data} subData={'infoPrecisa'} label={'¿La información fue Precisa?'}/>
+          <Chart dataDb={data} subData={'auxilios'} label={'¿Te gustaría participar de un curso de primeros auxilios en aves?'}/>
 {/*           <TablaAtencion/>
           <TablaOrientacion/>
           <TablaSobrevivio /> */}
         </div>
         <div className="charts">
+          <Chart dataDb={data} subData={'volunt'} label={'¿Te gustaría ser parte del voluntariado online o de tránsito de nuestra ONG?'}/>   
+          <Chart dataDb={data} subData={'sugerenciasRes'} label={'¿Tenes posibilidad de sumarte para aplicar a lo que propones?'}/> 
 {/*           <TablaInformacion/>
           <TablaAuxilios/>
           <TablaVolunt/> */}

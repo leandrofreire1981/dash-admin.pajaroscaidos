@@ -23,7 +23,7 @@ const Volunt = () => {
   const dataDb = useSelector(state => state.data)
   const dispatch = useDispatch()
 
-  let data = dataDb.filter(r => r.volunt === 'si' || r.volunt === 'Tal vez')
+  let data = dataDb.filter(r => r.volunt === 'si' || r.sugerenciasRes === 'si')
   
   function validate(){
     if(!auth.currentUser)
@@ -49,7 +49,7 @@ const Volunt = () => {
     <TableContainer component={Paper} className="table">
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
         <TableHead>
-            <TableCell className="tableCell">Mails de personas dispuestas a tomar el curso de voluntariado:</TableCell>
+            <TableCell className="tableCell">Mails de personas dispuestas a sumarse al voluntariado:</TableCell>
         </TableHead>
         <TableBody>
           {data.length && data.map((row) => (

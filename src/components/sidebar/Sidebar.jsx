@@ -68,7 +68,7 @@ const Sidebar = () => {
           <li>
             <SchoolIcon className="icon" />
             <Link to='/voluntariado' style={{ textDecoration: "none"}}>
-              <span>Curso volunt.</span>
+              <span>Sumar personas</span>
             </Link>
           </li>
           <p className="title">NEGATIVAS</p>
